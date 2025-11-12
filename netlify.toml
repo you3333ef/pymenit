@@ -13,6 +13,22 @@
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# Redirect dynamic routes to meta.html for proper OG tag generation
+# This ensures social media crawlers see the correct preview
+
+[[redirects]]
+  from = "/pay/*"
+  to = "/meta.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/r/*"
+  to = "/meta.html"
+  status = 200
+  force = true
+
+# Fallback for SPA routing - catch all other routes
 [[redirects]]
   from = "/*"
   to = "/index.html"

