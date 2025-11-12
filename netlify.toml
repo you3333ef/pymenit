@@ -1,75 +1,32 @@
-functionsDirectory = "/data/data/com.termux/files/home/always-minus/netlify/functions"
-functionsDirectoryOrigin = "config-v1"
-headersOrigin = "config"
-redirectsOrigin = "config"
-plugins = []
-
 [build]
-publish = "/data/data/com.termux/files/home/always-minus/dist"
-publishOrigin = "config"
-commandOrigin = "config"
-command = "npm run build"
-functions = "/data/data/com.termux/files/home/always-minus/netlify/functions"
+  publish = "."
+  command = "echo 'Static site - no build needed'"
 
-  [build.environment]
-
-  [build.processing]
-
-    [build.processing.css]
-
-    [build.processing.html]
-
-    [build.processing.images]
-
-    [build.processing.js]
-
-  [build.services]
-
-[functions]
-
-  [functions."*"]
+[build.environment]
+  NODE_VERSION = "18"
 
 [[headers]]
-for = "/*"
-
+  for = "/*"
   [headers.values]
-  X-Frame-Options = "SAMEORIGIN"
-  X-Content-Type-Options = "nosniff"
-  X-XSS-Protection = "1; mode=block"
-  Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
 
 [[redirects]]
-from = "/r/*"
-to = "/.netlify/functions/microsite-meta"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
+  from = "/r/*"
+  to = "/index.html"
+  status = 200
+  force = false
 
 [[redirects]]
-from = "/pay/*"
-to = "/.netlify/functions/microsite-meta"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
+  from = "/pay/*"
+  to = "/index.html"
+  status = 200
+  force = false
 
 [[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
-force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
