@@ -14,19 +14,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
 
 [[redirects]]
-  from = "/r/*"
-  to = "/index.html"
-  status = 200
-  force = false
-
-[[redirects]]
-  from = "/pay/*"
-  to = "/index.html"
-  status = 200
-  force = false
-
-[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
+  force = true
